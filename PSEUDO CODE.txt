@@ -1,0 +1,39 @@
+(Demo:  https://www.youtube.com/watch?v=W-IJcC4tYFI&feature=youtu.be)
+
+1)  Press any key to begin (Start Box? - Code last)
+
+2)  HTML Elements:
+
+	*Win Counter
+	*Guess remaining Counter
+	*Letters already guessed box
+	*Current Word - Empty Spaces
+
+3)   On letter press:
+
+	*Checks if Letter has been guessed
+		IF YES --
+		{DO NOTHING}
+
+		ELSE -- 
+		Continue {
+
+	*Pressed key added to guessed box
+	*Checks if letter is in secret word
+		IF YES --
+		Current Word box is updated
+
+		ELSE --
+		Guesses Remaining reduced by 1
+		
+	*Checks if Word is solved
+		IF YES --
+		Congratulations screen
+		Wins increases by 1
+		Reset
+
+	*Checks if Guesses Remaining is zero
+		IF YES --
+		Reveal word
+		Game over screen
+		Reset
