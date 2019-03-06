@@ -3,17 +3,22 @@ var winCounter = document.getElementById("winCounter");
 var guessCounter = document.getElementById("guessCounter");
 var guessDisplay = document.getElementById("guessDisplay");
 var currentWord = document.getElementById("currentWord");
+var lossCounter = document.getElementById("lossCounter");
 
 // Vars to control game logic
 var allGuesses = [];
 var guessUpdate = "";
-var secretWord = "secretword2";
 var guessRemain = 10;
 var wordDisplay = "";
 var winValue = 0;
 var winTest = 0;
 var currentGuess =""
 var winCount = 0
+var lossCount = 0
+var wordList = ["chicken", "cow", "birdie", "snow", "rent", "factory", "building", "display", "mortgage", "automobile"]
+
+//Pick random word from word list
+var secretWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 //Split secretWord into Array
 var secretArray = secretWord.split("")
@@ -53,37 +58,37 @@ document.onkeyup = function(event) {
                 secretArray[correctGuess] = "9"
                 guessRemain= guessRemain + 1;
                 winTest = 0
-                winTest = parseInt(winTest)
+
                 
 
                 for (q=0; q<secretArray.length; q++) {
                     winTest = winTest + parseInt(secretArray[q])
                 }
 
-
+                
                 
             }
             //Display revealed part of word
             currentWord.innerHTML = wordDisplay;
+            winTest = parseInt(winTest)
         }
         if (correctGuess == -1) {
             guessRemain = guessRemain - 1;
             guessCounter.innerHTML = guessRemain;
 
         }
-    
-        
+        if (winTest == winValue){
+            alert("You win!")
+            winCount = winCount +1
+            winCounter.innerHTML = winCount 
+            reset()
+        }
+        if (guessRemain == 0) {
+            alert("You lose!")
+            reset()
+        }  
     }
-    if (winTest == winValue){
-        alert("You win!")
-        winCount = winCount +1
-        winCounter.innerHTML = winCount 
-        reset()
-    }
-    if (guessRemain == 0) {
-        alert("You lose!")
-        reset()
-    }
+
 }
 
 //Secret Word Initializaton - sets to all dashes
@@ -91,6 +96,13 @@ for (i=0; i < secretWord.length; i++) {
     wordDisplay = wordDisplay.concat("_ ");
     winValue = winValue + 9;
 }
+
+//Display initialization
+winCounter.innerHTML = winCount
+lossCounter.innerHTML = lossCount
+guessCounter.innerHTML = guessRemain
+guessDisplay.innerHTML = guessUpdate
+
 currentWord.innerHTML = wordDisplay;
 //This array will be what updates with correct letters
 //It should begin as all dashes
@@ -101,12 +113,13 @@ displayArray.pop();
 function reset() {
 allGuesses = [];
 guessUpdate = "";
-secretWord = "newword";
 guessRemain = 10;
 wordDisplay = "";
 winValue = 0;
 winTest = 0;
 currentGuess = ""
+
+secretWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 secretArray = secretWord.split("");
 

@@ -1,0 +1,61 @@
+#winLabel {
+    background-color: green;
+    float: left;
+}
+
+#winCounter {
+    float: left;
+    margin-left: 10px;
+}
+
+#lossLabel {
+    background-color: red;
+    float: left;
+    clear:both;
+    margin-top: 20px;
+
+}
+
+#lossCounter {
+    float:left;
+    margin-left: 10px;
+    margin-top: 20px;
+
+}
+
+#guessLabel {
+    clear: both;
+    float: left;
+    margin-top: 20px;
+
+}
+
+#guessCounter{
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+#letterLabel {
+    clear: both;
+    float: left;
+    margin-top: 20px;
+}
+
+#guessDisplay {
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+
+}
+
+#currentWord {
+    font-size: 48px;
+    text-align: center;
+    width: 600px;
+    clear: both;
+    padding-top: 30px;
+
+
+
+}
