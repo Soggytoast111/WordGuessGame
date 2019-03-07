@@ -16,6 +16,9 @@ var currentGuess =""
 var winCount = 0
 var lossCount = 0
 var wordList = ["chicken", "cow", "birdie", "snow", "rent", "factory", "building", "display", "mortgage", "automobile"]
+var rand = 1
+
+
 
 //Pick random word from word list
 var secretWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -25,6 +28,8 @@ var secretArray = secretWord.split("")
 
 // pressed key Event
 document.onkeyup = function(event) {
+    //play random sound
+    randomsfx()
     //collects pressed key into var
     var currentGuess = event.key;
     //write bool to check if guess already exists
@@ -85,6 +90,7 @@ document.onkeyup = function(event) {
         }
         if (guessRemain == 0) {
             alert("You lose!")
+            lossCount = lossCount +1
             reset()
         }  
     }
@@ -118,7 +124,7 @@ wordDisplay = "";
 winValue = 0;
 winTest = 0;
 currentGuess = ""
-
+randommusic()
 secretWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 secretArray = secretWord.split("");
@@ -136,3 +142,47 @@ displayArray = wordDisplay.split(" ");
 //remove empty index
 displayArray.pop();
 }
+
+//Sound Effects
+
+var clicksound = [
+    "assets/sound/sfx/SE_00007.wav",
+    "assets/sound/sfx/SE_00008.wav",
+    "assets/sound/sfx/SE_00009.wav",
+    "assets/sound/sfx/SE_00010.wav",
+    "assets/sound/sfx/SE_00011.wav",
+    "assets/sound/sfx/SE_00012.wav",
+    "assets/sound/sfx/SE_00013.wav",
+    "assets/sound/sfx/SE_00024.wav",
+    "assets/sound/sfx/SE_00025.wav",
+    "assets/sound/sfx/SE_00026.wav",
+    "assets/sound/sfx/SE_00027.wav",
+    "assets/sound/sfx/SE_00069.wav"
+]
+
+function randomsfx() {
+    var rand = Math.floor(Math.random() * clicksound.length);
+    document.getElementById("sfx1").src = clicksound[rand]
+    document.getElementById("sfx1").play()
+}
+
+//Music
+
+var musicplay = [
+    "assets/sound/music/Balrog.mp3",
+    "assets/sound/music/Blanka.mp3",
+   "assets/sound/music/Chun.mp3",
+   "assets/sound/music/Guile.mp3",
+   "assets/sound/music/Honda.mp3",
+   "assets/sound/music/Ken.mp3",
+    "assets/sound/music/Vega.mp3",
+    "assets/sound/music/Zangief.mp3"
+]
+
+function randommusic() {
+    var rand = Math.floor(Math.random() * musicplay.length);
+    document.getElementById("music").src = musicplay[rand]
+    document.getElementById("music").play()
+}
+
+
