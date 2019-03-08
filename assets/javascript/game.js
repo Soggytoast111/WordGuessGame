@@ -83,14 +83,15 @@ document.onkeyup = function(event) {
 
         }
         if (winTest == winValue){
-            alert("You win!")
+            setTimeout(function() {alert("You win!");}, 1000)
             winCount = winCount +1
             winCounter.innerHTML = winCount 
-            reset()
+            setTimeout(function() {reset();}, 2000)
         }
         if (guessRemain == 0) {
             alert("You lose!")
             lossCount = lossCount +1
+            lossCounter.innerHTML = lossCount 
             reset()
         }  
     }
