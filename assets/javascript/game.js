@@ -197,7 +197,7 @@ document.body.onclick = function() {randommusic()};
 //win screens and sound
 function youwin() {
     var winscreen = "assets/images/youwin.png"
-    var winsound = "assets/sound/sfx/youwin.wav"
+    var winsound = "assets/sound/sfx/Youwin.wav"
     document.getElementById("screen").classList.remove("hidden")
     document.getElementById("screen").src = winscreen
     document.getElementById("music").pause()
@@ -208,7 +208,7 @@ function youwin() {
 //loss screens and sound
 function youlose() {
     var losescreen = ["assets/images/gameover1.png", "assets/images/gameover2.png", "assets/images/gameover3.png", "assets/images/gameover4.png", "assets/images/gameover5.png", "assets/images/gameover6.png"]
-    var losesound = "assets/sound/sfx/youlose2.wav"
+    var losesound = "assets/sound/sfx/YouLose2.wav"
     var rand = Math.floor(Math.random() * losescreen.length);
     document.getElementById("screen").classList.remove("hidden")
     document.getElementById("screen").src = losescreen[rand]
