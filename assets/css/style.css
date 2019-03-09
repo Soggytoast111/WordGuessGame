@@ -3,6 +3,11 @@ body {
     margin-right: 10%;
 }
 
+#container1 {
+
+    position:absolute;
+}
+
 #gamedisplay {
 
     position: absolute;
@@ -13,7 +18,7 @@ body {
 #guesses {
 
     position: relative;
-    left: 120px;
+    left: -20px;
 
 }
 
@@ -75,9 +80,26 @@ body {
     width: 600px;
     clear: both;
     padding-top: 30px;
-    position: relative;
-    top: 30px;
+    position: absolute;
+    top: 150px;
+    left: -150px;
+    z-index: 5;
+}
 
+#screen {
+    width: 400px;
+    height: 325px;
+    z-index: 100;
+}
 
+#screendiv {
+    position: absolute;
+    top:-36px;
+    left:-27px;
+    z-index: 100;
+}
+
+.hidden {
+    display:none;
 
 }

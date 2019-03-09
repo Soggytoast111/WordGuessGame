@@ -15,7 +15,7 @@ var winTest = 0;
 var currentGuess =""
 var winCount = 0
 var lossCount = 0
-var wordList = ["chicken", "cow", "birdie", "snow", "rent", "factory", "building", "display", "mortgage", "automobile"]
+var wordList = ["adon", "birdie", "eagle", "geki", "gen", "joe", "ken", "lee", "mike", "retsu", "ryu", "sagat", "akuma", "balrog", "blanka", "cammy", "chun-li", "deejay", "dhalsim", "e.honda", "feilong", "guile", "m.bison", "t.hawk", "vega", "zangief", "cody", "dan", "kage", "guy", "ingrid", "karin", "maki", "nash", "r.mika", "rolento", "rose", "sakura", "sodom", "alex", "dudley", "elena", "gill", "hugo", "ibuki", "makoto", "necro", "oro", "q", "remy", "sean", "twelve", "urien", "yun", "yang", "abel", "c.viper", "decapre", "elfuerte", "gouken", "hakan", "juri", "oni", "poison", "rufus", "seth", "abigail", "ed", "f.a.n.g.", "falke", "g", "kolin", "laura", "menat", "necalli", "rashid", "zeku"]
 var rand = 1
 
 
@@ -51,6 +51,10 @@ document.onkeyup = function(event) {
         for (z=0; z<secretArray.length; z++){
             var correctGuess = secretArray.indexOf(currentGuess)
             if (correctGuess != -1) {
+                if (correctGuess == 0) {
+                    currentGuess = currentGuess.toUpperCase()
+                }
+
                 //Updates array revealing correct guess
                 displayArray[correctGuess] = currentGuess;
                 wordDisplay = displayArray.toString();
@@ -83,16 +87,17 @@ document.onkeyup = function(event) {
 
         }
         if (winTest == winValue){
-            setTimeout(function() {alert("You win!");}, 1000)
+            youwin()
             winCount = winCount +1
             winCounter.innerHTML = winCount 
-            setTimeout(function() {reset();}, 2000)
+            setTimeout(function() {reset();}, 6000)
         }
         if (guessRemain == 0) {
-            alert("You lose!")
+            youlose()
+            //alert("You lose!")
             lossCount = lossCount +1
             lossCounter.innerHTML = lossCount 
-            reset()
+            setTimeout(function() {reset();}, 6000)
         }  
     }
 
@@ -127,7 +132,8 @@ winTest = 0;
 currentGuess = ""
 randommusic()
 secretWord = wordList[Math.floor(Math.random() * wordList.length)];
-
+document.getElementById("screen").src = "assets/images/none.png";
+document.getElementById("screen").className = "hidden";
 secretArray = secretWord.split("");
 
 guessDisplay.innerHTML = "";
@@ -186,4 +192,27 @@ function randommusic() {
     document.getElementById("music").play()
 }
 
+document.body.onclick = function() {randommusic()};
 
+//win screens and sound
+function youwin() {
+    var winscreen = "assets/images/youwin.png"
+    var winsound = "assets/sound/sfx/youwin.wav"
+    document.getElementById("screen").classList.remove("hidden")
+    document.getElementById("screen").src = winscreen
+    document.getElementById("music").pause()
+    document.getElementById("music").src = winsound
+    document.getElementById("music").play()
+}
+
+//loss screens and sound
+function youlose() {
+    var losescreen = ["assets/images/gameover1.png", "assets/images/gameover2.png", "assets/images/gameover3.png", "assets/images/gameover4.png", "assets/images/gameover5.png", "assets/images/gameover6.png"]
+    var losesound = "assets/sound/sfx/youlose2.wav"
+    var rand = Math.floor(Math.random() * losescreen.length);
+    document.getElementById("screen").classList.remove("hidden")
+    document.getElementById("screen").src = losescreen[rand]
+    document.getElementById("music").pause()
+    document.getElementById("music").src = losesound
+    document.getElementById("music").play()
+}
