@@ -15,6 +15,7 @@ var winTest = 0;
 var currentGuess =""
 var winCount = 0
 var lossCount = 0
+//var wordList = ["aaaeee", "aeaeaeae", "iiiioooo", "iooiiooiio"]
 var wordList = ["adon", "birdie", "eagle", "geki", "gen", "joe", "ken", "lee", "mike", "retsu", "ryu", "sagat", "akuma", "balrog", "blanka", "cammy", "chun-li", "deejay", "dhalsim", "e.honda", "feilong", "guile", "m.bison", "t.hawk", "vega", "zangief", "cody", "dan", "kage", "guy", "ingrid", "karin", "maki", "nash", "r.mika", "rolento", "rose", "sakura", "sodom", "alex", "dudley", "elena", "gill", "hugo", "ibuki", "makoto", "necro", "oro", "q", "remy", "sean", "twelve", "urien", "yun", "yang", "abel", "c.viper", "decapre", "elfuerte", "gouken", "hakan", "juri", "oni", "poison", "rufus", "seth", "abigail", "ed", "f.a.n.g.", "falke", "g", "kolin", "laura", "menat", "necalli", "rashid", "zeku"]
 var rand = 1
 
@@ -67,7 +68,7 @@ document.onkeyup = function(event) {
                 secretArray[correctGuess] = "9"
                 guessRemain= guessRemain + 1;
                 winTest = 0
-
+                currentGuess = currentGuess.toLowerCase()
                 
 
                 for (q=0; q<secretArray.length; q++) {
